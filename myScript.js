@@ -5,16 +5,7 @@ console.log(myDiv);
 // Click event to attach to button
 function myClick () {
 
-  // Quick check to verify that the function executes.
-  console.log("test function");
-  // Get the values that were input into the two text boxes.
-  // var q1 = document.getElementById('q1').value;
-  // var false1 = document.getElementById('false1').checked;
-  // var false2 = document.getElementById('false2').checked;
-  // var true1 = document.getElementById('true1').checked;
-  // var true2 = document.getElementById('true2').checked;
-  // var true3 = document.getElementById('true3').checked;
-
+  // Store the data in a JSON
   myJSON = {
     "q1": document.getElementById('q1').value,
     "false1": document.getElementById('false1').checked,
@@ -23,6 +14,8 @@ function myClick () {
     "true2": document.getElementById('true2').checked,
     "true3": document.getElementById('true3').checked,
   }
+
+  // Display stuff
 
   if (myJSON['q1'] == "" || (!myJSON['false1'] && !myJSON['false2']) || (!myJSON['true1'] && !myJSON['true2'] && !myJSON['true3'])) {
     myDiv.innerHTML += "\t\t<h1> You didn't even answer everything! You lazy bum. I predicted this would happen. Your thoughts are not beyond me, mortal. </h1>\n"
@@ -60,7 +53,7 @@ function myClick () {
   }
 
 
-  // Retrieve
+  // Retrieve number of times visited
   var timesVisited = localStorage.getItem("timesVisited");
   console.log(timesVisited);
   if (timesVisited == null) {
@@ -70,6 +63,27 @@ function myClick () {
 
     localStorage.setItem("timesVisited", parseInt(timesVisited) + 1);
     myDiv.innerHTML += "\t\t<p> Oh dear. You have visited this site " + timesVisited + " times already!</p>\n";
+  }
+
+
+  // Retrieve previous answer
+  var prevAns = localStorage.getItem("prevAns");
+  console.log(prevAns);
+  if (prevAns == null) {
+    localStorage.setItem("prevAns", [JSON.stringify(myJSON)]);
+  } else {
+    myDiv.innerHTML += "\t\t <p>Here are your previous answers:</p> \n"
+
+    for (var i = 0; i < prevAns.length; i++) {
+      var prevJSON = prevAns[i];
+      console.log(prevJSON);
+      prevJSON = JSON.parse(prevJSON);
+      myDiv.innerHTML += "\t\t <hr /> \n"
+      myDiv.innerHTML += "\t\t<p>You previously answered " + prevJSON['q1'] + " for question 1.</p>\n";
+    }
+
+    prevAns.push(JSON.stringify(myJSON));
+    localStorage.setItem("prevAns", prevAns);
   }
 
 }
