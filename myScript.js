@@ -69,21 +69,28 @@ function myClick () {
   // Retrieve previous answer
   var prevAns = localStorage.getItem("prevAns");
   console.log(prevAns);
-  if (prevAns == null) {
-    localStorage.setItem("prevAns", [JSON.stringify(myJSON)]);
+  if (typeof(prevAns) == "undefined") {
+    console.log("NULL");
+    var someList = [];
+    someList.push(myJSON);
+    localStorage.setItem("prevAns", JSON.stringify(someList));
   } else {
     myDiv.innerHTML += "\t\t <p>Here are your previous answers:</p> \n"
+    console.log(prevAns);
 
+    prevAns = JSON.parse(prevAns);
     for (var i = 0; i < prevAns.length; i++) {
       var prevJSON = prevAns[i];
       console.log(prevJSON);
-      prevJSON = JSON.parse(prevJSON);
       myDiv.innerHTML += "\t\t <hr /> \n"
       myDiv.innerHTML += "\t\t<p>You previously answered " + prevJSON['q1'] + " for question 1.</p>\n";
     }
 
-    prevAns.push(JSON.stringify(myJSON));
-    localStorage.setItem("prevAns", prevAns);
+    console.log(typeof prevAns);
+    console.log(prevAns);
+    prevAns.push(myJSON);
+    localStorage.setItem("prevAns", JSON.stringify(prevAns));
+    // localStorage.removeItem("prevAns");
   }
 
 }
