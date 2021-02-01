@@ -123,8 +123,6 @@ function answered(){
   currStatus[1] = testedAll;
   localStorage.setItem("currStatus", JSON.stringify(currStatus));
 
-  console.log(localStorage.getItem("currStatus"));
-  console.log(localStorage.getItem("A"));
 }
 
 function clearStorage(){
@@ -136,6 +134,7 @@ function clearStorage(){
   }
 
   localStorage.removeItem("currStatus");
+  localStorage.removeItem("text");
   var alphabet = "QWERTYUIOPASDFGHJKLZXCVBNM";
   var i = alphabet.length; // 26
   while (i--) {
@@ -154,9 +153,11 @@ function colorWords(){
     letter = textInput.charAt(i);
     if (65 <= letter.toUpperCase().charCodeAt(0) <= 90) {
       // Is a capital letter
-      var color = averageColorOf(letter);
+      var color = averageColorOf(letter.toUpperCase());
       if (color != null) {
         textOutput += "<span style=color:" + color + ">" + letter + "</span>";
+        console.log("Coloring is fun");
+        console.log("Colored " + letter + " to " + color);
       } else {
         textOutput += letter;
         console.log("No color data for letter " + letter);
