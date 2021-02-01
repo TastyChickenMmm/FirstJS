@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Interactive Synesthesia Results</title>
+    <meta charset="utf-8"></meta>
+    <script defer src="synTest.js"></script>
+    <style>
+    #myDiv, button {
+      font-size: 150%;
+    }
+    input {
+      font-size: 125%;
+    }
+    #textOutput {
+      border: 1px solid black;
+      width: 819px;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div>
+      <a href="synTest.html">Click to continue testing your colors!</a>
+    </div>
+    <div id="myDiv">
+
+      <label for='textBox'>Your input:</label>
+      <br />
+      <textarea id="textBox" cols="100" rows="5"></textarea>
+      <br />
+      <label for='textOutput'>Colored Text Output:</label>
+      <br />
+      <div id="textOutput">
+        <p></p>
+      </div>
+
+      <br />
+
+      <button onclick='colorWords()'>Show me the magic, please.</button>
+
+      <!-- Buttom for clearing data -->
+      <!-- TODO: Add a pop up asking "are you surrrreeeeeeeeee u wanna do this??????" -->
+      <button onclick='clearStorage()'>Clear my data.</button>
+    </div>
+  </body>
+</html>

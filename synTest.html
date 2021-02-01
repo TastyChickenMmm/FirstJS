@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Synesthesia Test</title>
+    <meta charset="utf-8"></meta>
+    <script defer src="synTest.js"></script>
+    <style>
+    #myDiv, button {
+      font-size: 150%;
+    }
+    input {
+      font-size: 125%;
+    }
+    #giantColorChangingThing {
+      font-size: 1000%;
+      text-align: center;
+    }
+    </style>
+  </head>
+  <body id = "body">
+    <!-- "Nav bar," but it's only one link  -->
+    <div>
+      <a href="synResult.html">Click to see your results in action!</a>
+    </div>
+
+    <!-- Questions -->
+    <div id="form">
+      <!-- Color picker -->
+      <label for='colorForm'>Select which color you see the following symbol in:</label>
+      <form id = "colorForm">
+        <input type="color" id="color" name="color">
+      </form>
+
+      <!-- Button for "I don't percieve this in a color" -->
+      <label for='dontPerceiveForm'>I don't perceive this in a color.</label>
+      <form id = "dontPerceiveForm">
+        <input type="checkbox" id="dontPerceive" name="dontPerceive">
+      </form>
+    </div>
+
+    <!-- Done button -->
+    <button onclick='answered()'>Ok, I'm done.</button>
+
+<!-- Giant color-changing thing -->
+    <div id = "giantColorChangingThing">
+      <p>A</p>
+    </div>
+
+
+
+  </body>
+</html>
