@@ -15,9 +15,6 @@ textOutputBox = document.getElementById("textOutput");
 
 
 // Event listeners
-if (colorForm != null) {
-  colorForm.addEventListener("click", changeColor);
-}
 if (dontPerceiveForm != null) {
   dontPerceiveForm.addEventListener("click", dontPerceive);
 }
